@@ -1,0 +1,53 @@
+<script>
+
+let topnav, selectedTab, selectedTabContainer;
+
+let updateTabSelection = (event) => {
+  selectedTab?.classList?.remove("active");
+  selectedTab = event.target;
+  selectedTab?.classList?.add("active");
+  selectedTabContainer?.classList?.add("hide");
+  selectedTabContainer = document.getElementById(event.target.name);
+  selectedTabContainer?.classList?.remove("hide");
+};
+
+
+let loadUI = async () => {
+  let topnav = document.getElementById("menu");
+  selectedTab = document.getElementById("homeTab");
+  selectedTabContainer = document.getElementById("homePanel");
+  topnav.onclick = updateTabSelection;
+};
+
+let documentReady = () => {
+  document.getElementById("sideload-msg").style.display = "none";
+  document.getElementById("app-body").classList.remove("hide");
+  document.getElementById("createForm").onclick =  createForm;
+  document.getElementById("previewForm").onclick = launchPreviewDialog;
+  document.getElementById("validateForm").onclick = validateAdaptiveForm;
+  loadUI();
+};
+
+let validateAdaptiveForm = async () => {
+  google.script.run
+    .withFailureHandler(formValidationFailureHandler).withSuccessHandler(formValidationSuccessHandler).validateForm();
+}
+
+let createForm = async (context) => {
+  google.script.run.createForm();
+};
+
+function formValidationSuccessHandler() {
+   console.log("form is validated successfully")
+}
+
+function launchPreviewDialog() {
+  //TODO
+}
+
+function formValidationFailureHandler() {
+  console.log("Error in form  validation ");
+}
+documentReady();
+
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Adaptive Form add on</title>
+
+      <?!= include('taskpanel/TaskpanelStyle'); ?>
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header>
+        <div id="menu" class="topnav">
+          <a id="homeTab" name="homePanel" class="active">Home</a>
+          <a id="createTab" name="createPanel">Create</a>
+          <a id="validateTab" name="validatePanel">Actions</a>
+          <div class="search-container">
+          </div>
+        </div>
+      </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main">
+        <div class="container">
+          <div id="homePanel">
+            <h2>Welcome to Adaptive Form</h2>
+                <button title="Preview" id="previewForm">
+                  <span>Preview</span>
+                </button>
+                <button id="validateForm">Validate Form</button> <br>
+                <select id="errors" multiple>
+                    <option disabled>No errors...</option>
+                </select>
+          </div>
+          <div id="createPanel" class="createform hide">
+            <label for="templates">Templates </label>
+            <select id="templates" required >
+              <option value="registration">Registration</option>
+              <option value="loan">Loan Form</option>
+            </select>
+            <label><input type="checkbox"> Freeze Header & Column</label>
+            <br>
+  
+             <button id="previewTemplate">Preview Template</button> 
+             <button id="createForm">Create Form</button> <br>
+          </div>
+          <div id="validatePanel" class="validateform hide">
+            <button title="Refresh" id="refresh">
+              <span>Refresh</span>
+            </button>
+            <button title="Enabled submit data to excel">
+              Enable Submit
+            </button>
+          </div>
+        </div>
+         
+      </main>
+    <main id="app-body" class="ms-welcome__main hide">
+        <button class="button" id="validateForm">Validate Form</button> <br>
+        <select id="errors" multiple>
+        </select>
+    </main>
+
+
+     <?!= include('taskpanel/TaskpanelScript'); ?>
+</body>
+
+</html>
